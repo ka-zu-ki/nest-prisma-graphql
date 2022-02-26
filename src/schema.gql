@@ -20,7 +20,5 @@ type PostModel {
 }
 
 type Query {
-  fixedPosts: [PostModel!]
   posts(type: [String!]): [PostModel!]
-  prismaPosts: [PostModel!]
 }

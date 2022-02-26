@@ -7,22 +7,7 @@ import { GetPostsArgs } from './models/get-posts-connection.args';
 export class PostsResolver {
   constructor(private readonly prisma: PrismaService) {}
 
-  // 役目を終えたのでリネーム
-  @Query(() => [PostModel], { name: 'fixedPosts', nullable: true })
-  async getPostsByFixedData() {
-    return [
-      {
-        id: '1',
-        title: 'NestJS is so good.',
-      },
-      {
-        id: '2',
-        title: 'GraphQL is so good.',
-      },
-    ];
-  }
-
-  @Query(() => [PostModel], { name: 'prismaPosts', nullable: true })
+  @Query(() => [PostModel], { name: 'posts', nullable: true })
   async getPostsByPrisma() {
     return this.prisma.post.findMany();
   }
