@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { PostsModule } from './posts/posts.module';
 import * as path from 'path';
+import { PrismaService } from './prisma.service';
+import { PostsResolver } from './posts/post.resolvers';
 
 @Module({
   imports: [
@@ -11,9 +13,10 @@ import * as path from 'path';
       autoSchemaFile: path.join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
     }),
-    PostsModule,
+    // PostsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  // providers: [AppService, PrismaService],
+  providers: [AppService, PrismaService, PostsResolver],
 })
 export class AppModule {}
